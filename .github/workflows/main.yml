@@ -27,7 +27,7 @@ jobs:
           mvn deploy -DskipTests -Dmaven.repo.local=repo -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/ythrinathreddy/devops
         env:
           MAVEN_USERNAME: ${{ github.actor }}
-          MAVEN_PASSWORD: ${{ secrets.MAVEN_GITHUB_TOKEN }}
+          MAVEN_PASSWORD: ${{ secrets.APP_TOKEN }}
 
       - name: Verify Published Package
         run: |
