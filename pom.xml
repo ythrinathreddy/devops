@@ -7,7 +7,7 @@
     <!-- This is often your domain name (reversed.)  -->
     <groupId>com.ythrinathareddy</groupId>
     <!-- The name of this project (actually, the name of the artifact, which is the thing that this project produces. A jar in this case.) -->
-    <artifactId>javaparser-maven-sample</artifactId>
+    <artifactId>src</artifactId>
     <!-- The version of this project. SNAPSHOT means "we're still working on it" -->
     <version>1.0-SNAPSHOT</version>
 
@@ -30,7 +30,7 @@
 
     <!-- This blob of configuration tells Maven to make the jar executable. You can run it with:
     mvn clean package
-    java -jar target/javaparser-maven-sample-1.0-SNAPSHOT-shaded.jar
+    java -jar target/src-1.0-SNAPSHOT-shaded.jar
     -->
     <build>
         <plugins>
