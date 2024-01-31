@@ -24,11 +24,11 @@ jobs:
 
       - name: Deploy to GitHub Packages
         run: |
-          mvn deploy -DskipTests -Dmaven.repo.local=repo -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/ythrinathareddy/ythrinathreddy/devops
+          mvn deploy -DskipTests -Dmaven.repo.local=repo -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/ythrinathreddy/devops
         env:
           MAVEN_USERNAME: ${{ github.ythrinathareddy }}
           MAVEN_PASSWORD: ${{ secrets.MAVEN_GITHUB_TOKEN }}
 
       - name: Verify Published Package
         run: |
-          mvn dependency:get -DgroupId=com.ythrinathareddy -DartifactId=src -Dversion=1.0-SNAPSHOT -Dpackaging=jar -DremoteRepositories=https://maven.pkg.github.com/ythrinathareddy/ythrinathreddy/devops
+          mvn dependency:get -DgroupId=com.ythrinathareddy -DartifactId=src -Dversion=1.0-SNAPSHOT -Dpackaging=jar -DremoteRepositories=https://maven.pkg.github.com/ythrinathreddy/devops
