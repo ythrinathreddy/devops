@@ -1,9 +1,9 @@
-name: Build Maven Project
+name: Build and Publish
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -21,3 +21,14 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
+
+      - name: Deploy to GitHub Packages
+        run: |
+          mvn deploy -DskipTests -Dmaven.repo.local=repo -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/OWNER/REPO
+        env:
+          MAVEN_USERNAME: ${{ github.actor }}
+          MAVEN_PASSWORD: ${{ secrets.APP_TOKEN }}
+
+      - name: Verify Published Package
+        run: |
+          mvn dependency:get -DgroupId=group -DartifactId=artifact -Dversion=version -Dclassifier=classifier -Dpackaging=jar -DremoteRepositories=https://maven.pkg.github.com/OWNER/REPO
